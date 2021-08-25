@@ -105,12 +105,13 @@
               });
               html += "<br>";
             }
+
             html =
               "<p>🏗 报错最多(" +
               maxErrPage.errMsg.length +
-              "个报错)的页面是：<span class='label'>" +
+              "个报错)的页面是：<span class='label'><a href='"+maxErrPage.url+"' target='_blank'>" +
               maxErrPage.url +
-              "</span></p>" +
+              "</a></span></p>" +
               html;
             html =
               "<p>📝 同类型错误次数(" +
@@ -119,6 +120,12 @@
               "<span class='label'>" +
               maxErr +
               "</span></p>" +
+              html;
+
+            html =
+              "<p>📌 今日共计：" +
+              Object.keys(allErr).length +
+              " 个类型报错</p>" +
               html;
             let nullPage = result.allResults.filter((v) => v.nullPage);
             if (nullPage.length > 0) {
@@ -150,6 +157,7 @@
               result.startTime.split(" ")[0] +
               " / 数据聚合播报</h2>" +
               html;
+              html+="<p>你看到了我的底线~😋</p>"
             $("#main").html(html);
           },
         });
